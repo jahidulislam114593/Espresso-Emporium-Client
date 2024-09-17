@@ -5,21 +5,45 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddCoffee from "./Components/AddCoffee.jsx";
 import UpdateCoffee from "./Components/UpdateCoffee.jsx";
+import Home from "./Components/Home.jsx";
+import Root from "./Components/Root.jsx";
+import ContactUs from "./Components/ContactUs.jsx";
+import Services from "./Components/Services.jsx";
+import About from "./Components/About.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-    loader: () => fetch("http://localhost:5000/coffee"),
-  },
-  {
-    path: "/addCoffee",
-    element: <AddCoffee />,
-  },
-  {
-    path: "/updateCoffee/:id",
-    element: <UpdateCoffee />,
-    loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`),
+    element: <Root />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+        loader: () => fetch("http://localhost:5000/coffee"),
+      },
+      {
+        path: "/addCoffee",
+        element: <AddCoffee />,
+      },
+      {
+        path: "/updateCoffee/:id",
+        element: <UpdateCoffee />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/coffee/${params.id}`),
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
+      },
+    ],
   },
 ]);
 
