@@ -23,7 +23,6 @@ const AddCoffee = () => {
       details,
       photo,
     };
-    console.log(newCoffee);
 
     fetch("http://localhost:5000/coffee", {
       method: "POST",
@@ -45,114 +44,108 @@ const AddCoffee = () => {
         }
       });
   };
+
   return (
-    <div className="bg-[#F4F3F0] p-24 text-black">
-      <h3 className="text-7xl font-extrabold mb-8">Add A Coffee</h3>
+    <div className="bg-gray-100 p-10 text-black">
+      <h3 className="text-4xl font-bold text-center mb-6">Add New Coffee</h3>
+      <p className="text-center mb-8 text-gray-600">
+        It is a long established fact that a reader will be distracted by the
+        readable content of a page when looking at its layout.
+      </p>
       <form onSubmit={handleAddCoffee}>
-        <div className="md:flex">
-          <div className="form-control md:w-1/2 mr-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Coffee Name */}
+          <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Coffee Name</span>
+              <span className="label-text">Coffee Name</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="name"
-                placeholder="Coffee Name"
-                className="input input-bordered w-full"
-              />
-            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter coffee name"
+              className="input input-bordered w-full"
+            />
           </div>
-          <div className="form-control md:w-1/2 mb-6">
+          {/* Quantity */}
+          <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Available Quantity</span>
+              <span className="label-text">Available Quantity</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="quantity"
-                placeholder="Available Quantity"
-                className="input input-bordered w-full"
-              />
-            </label>
+            <input
+              type="text"
+              name="quantity"
+              placeholder="Enter available quantity"
+              className="input input-bordered w-full"
+            />
           </div>
-        </div>
-        <div className="md:flex">
-          <div className="form-control md:w-1/2 mr-4 mb-6">
+          {/* Supplier */}
+          <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Supplier</span>
+              <span className="label-text">Supplier</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="supplier"
-                placeholder="Supplier"
-                className="input input-bordered w-full"
-              />
-            </label>
+            <input
+              type="text"
+              name="supplier"
+              placeholder="Enter coffee supplier"
+              className="input input-bordered w-full"
+            />
           </div>
-          <div className="form-control md:w-1/2 mb-6">
+          {/* Taste */}
+          <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Taste</span>
+              <span className="label-text">Taste</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="taste"
-                placeholder="Taste"
-                className="input input-bordered w-full"
-              />
-            </label>
+            <input
+              type="text"
+              name="taste"
+              placeholder="Enter coffee taste"
+              className="input input-bordered w-full"
+            />
           </div>
-        </div>
-        <div className="md:flex">
-          <div className="form-control md:w-1/2 mr-4 mb-6">
+          {/* Category */}
+          <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Category</span>
+              <span className="label-text">Category</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="category"
-                placeholder="Category"
-                className="input input-bordered w-full"
-              />
-            </label>
+            <input
+              type="text"
+              name="category"
+              placeholder="Enter coffee category"
+              className="input input-bordered w-full"
+            />
           </div>
-          <div className="form-control md:w-1/2 mb-6">
+          {/* Details */}
+          <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Details</span>
+              <span className="label-text">Details</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="details"
-                placeholder="Details"
-                className="input input-bordered w-full"
-              />
-            </label>
+            <input
+              type="text"
+              name="details"
+              placeholder="Enter coffee details"
+              className="input input-bordered w-full"
+            />
           </div>
-        </div>
-        <div className="">
-          <div className="form-control w-full">
+          {/* Photo URL */}
+          <div className="form-control md:col-span-2">
             <label className="label">
-              <span className="label-text text-black">Photo URL</span>
+              <span className="label-text">Photo URL</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="photo"
-                placeholder="Photo URL"
-                className="input input-bordered w-full"
-              />
-            </label>
+            <input
+              type="text"
+              name="photo"
+              placeholder="Enter photo URL"
+              className="input input-bordered w-full"
+            />
           </div>
         </div>
-        <input
-          type="submit"
-          value="Add Coffee"
-          className="btn btn-block btn-success text-white mt-8"
-        />
+        <div className="mt-8 text-center">
+          <input
+            type="submit"
+            value="Add Coffee"
+            className="btn btn-primary w-full md:w-auto px-8 py-2 text-white font-semibold"
+          />
+        </div>
       </form>
     </div>
   );

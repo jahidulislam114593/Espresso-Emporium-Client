@@ -1,6 +1,6 @@
 import React from "react";
 import navImg from "../assets/more/15.jpg";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -35,7 +35,9 @@ const Navbar = () => {
         </ul>
 
         {/* Login Button */}
-        <button className="btn btn-outline btn-warning">Login</button>
+        <Link to="/login">
+          <button className="btn btn-outline btn-warning">Login</button>
+        </Link>
       </div>
     </nav>
   );
