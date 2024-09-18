@@ -12,6 +12,8 @@ import Services from "./Components/Services.jsx";
 import About from "./Components/About.jsx";
 import Login from "./Components/Login/Login.jsx";
 import Register from "./Components/Register/Register.jsx";
+import FirebaseProvider from "./Components/FirebaseProvider/FirebaseProvider.jsx";
+import DetailsCoffee from "./Components/DetailsCoffee/DetailsCoffee.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,12 @@ const router = createBrowserRouter([
       {
         path: "/updateCoffee/:id",
         element: <UpdateCoffee />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/coffee/${params.id}`),
+      },
+      {
+        path: "/deailsCoffee/:id",
+        element: <DetailsCoffee />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/coffee/${params.id}`),
       },
@@ -59,6 +67,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <FirebaseProvider>
+      <RouterProvider router={router} />
+    </FirebaseProvider>
   </StrictMode>
 );

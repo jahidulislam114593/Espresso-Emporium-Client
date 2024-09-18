@@ -38,6 +38,8 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
     });
   };
 
+  const handleDetailsCoffee = (_id) => {};
+
   return (
     <div className="bg-[#ECEAE3] shadow-lg rounded-lg flex items-center p-6 border border-gray-200">
       <figure className="w-1/3 ">
@@ -62,9 +64,11 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
       </div>
       <div className="card-actions justify-end ">
         <div className="join join-vertical space-y-4">
-          <button className="btn bg-[#D2B48C] text-white border-none text-xl">
-            <FaRegEye />
-          </button>
+          <Link to={`/deailsCoffee/${_id}`}>
+            <button className="btn bg-[#D2B48C] text-white border-none text-xl">
+              <FaRegEye />
+            </button>
+          </Link>
 
           <Link to={`/updateCoffee/${_id}`}>
             <button className="btn text-white text-xl bg-[#3C393B]">

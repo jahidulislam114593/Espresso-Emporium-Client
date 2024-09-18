@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import useAuth from "../Hooks/useAuth";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
+  const { signInUser } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    signInUser(email, password)
+      .then()
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -14,7 +31,7 @@ const Login = () => {
           </p>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <form className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -23,11 +40,11 @@ const Login = () => {
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
-                // {...register("email", { required: true })}
+                {...register("email", { required: true })}
               />
-              {/* {errors.email && (
+              {errors.email && (
                 <span className="text-red-500">This field is required</span>
-              )} */}
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -37,11 +54,11 @@ const Login = () => {
                 type="password"
                 placeholder="password"
                 className="input input-bordered"
-                // {...register("password", { required: true })}
+                {...register("password", { required: true })}
               />
-              {/* {errors.password && (
+              {errors.password && (
                 <span className="text-red-500">This field is required</span>
-              )} */}
+              )}
               {/* modal  */}
               {/* <ForgetPassByEmail /> */}
             </div>
@@ -55,7 +72,7 @@ const Login = () => {
               </Link>
             </label>
           </form>
-          {/* <SocialLogin /> */}
+          <SocialLogin />
         </div>
       </div>
     </div>
